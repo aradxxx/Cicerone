@@ -24,5 +24,11 @@ class Cicerone<T : BaseRouter> private constructor(val router: T) {
          * @param customRouter the custom router extending [BaseRouter]
          */
         fun <T : BaseRouter> create(customRouter: T) = Cicerone(customRouter)
+
+        /**
+         * Creates the Cicerone instance with the custom router factory.
+         * @param customRouterFactory custom router factory
+         */
+        fun <T : BaseRouter> create(customRouterFactory: Factory<T>) = Cicerone(customRouterFactory.create())
     }
 }
